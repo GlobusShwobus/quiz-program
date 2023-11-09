@@ -5,21 +5,21 @@ using std::endl;
 using std::string;
 using std::cin;
 
-class QuizGame {                                //the glue that really helped me get make it stick
+class QuizGame {                                //making the quiz into a class to glue it all together
 public:
     struct Quiz {
         string question[5];
         string answer[3];
         int correct[5];
     };
-    QuizGame() {                              //when you enter the class "QuizGame" into int main(), this is the part that gets executed
-        Quiz block[5];                         //idk why i named it block, because blocks of text probably
+    QuizGame() {                         //initializer
+        Quiz block[5];                   //idk why i named it block, because blocks of text probably
         AnswerSheet(block);
         QuizScript(block);
     }
-    void QuizScript(Quiz block[5]) {            //this was truly cursed for me, i deleted probably 1.5k lines of code starting over and over again
-        int option = 0;                               // at points this function really was cursed, made the program hard crash
-
+    void QuizScript(Quiz block[5]) {    //this was truly cursed for me, i deleted probably 1.5k lines of code starting over and over again
+        int option = 0;                 // at points this function really was cursed, made the program hard crash
+                                        //works now :d
         for (int i = 0; i < 5; i++) {
             for (int j = 0; j < 5; j++) {              //this was left over from iterating many times, I'm not sure this is needed
                 cout << block[0 + i].question[0 + i] << endl;
@@ -35,14 +35,14 @@ public:
                 }
                 if (option == block[0].correct[0 + i]) {
                     cout << endl << "**Correct**" << endl << endl;
-                    break; //no break = unintended behavior
+                    break;                     //no break = unintended behavior
                 }
                 else if (option != block[0].correct[0 + i]) {//???
                     cout << endl << "**IN_Correct**" << endl << endl;
-                    break; //no break = unintended behavior
+                    break;                    //no break = unintended behavior
                 }
             }
-            EXIT_SUCCESS;                               //just in case because from previous iterations the program hard crashed
+            EXIT_SUCCESS;                  //just in case because from previous iterations the program hard crashed
         }
     }
     void AnswerSheet(Quiz block[5]) {
